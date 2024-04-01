@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  background: #383241;
+  color: #b9aecd;
+}
+html,
+body,
+#root {
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+#root {
+  margin: 32px 44px;
+}
