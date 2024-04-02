@@ -27,6 +27,26 @@ h3 {
   color: #b88ef8;
 }
 
+button {
+  border-width: 2px;
+  border-color: #b88ef8;
+  background-color: #b88ef8;
+  border-radius: 0.375rem;
+  padding: 0.25rem;
+  color: #383241;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #a881e2;
+}
+
+img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
 .session-items {
   grid-template-columns: repeat(3, minmax(0, 300px));
   grid-auto-flow: dense;
