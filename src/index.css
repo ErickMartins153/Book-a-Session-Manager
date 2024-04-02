@@ -17,9 +17,11 @@ body,
   flex-flow: column wrap;
   flex: 1;
 }
-
+body {
+  overflow-y: scroll;
+}
 #root {
-  margin: 32px 44px;
+  padding: 32px 44px;
 }
 
 h2,
