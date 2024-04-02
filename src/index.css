@@ -17,3 +17,37 @@ body,
 #root {
   margin: 32px 44px;
 }
+
+h2,
+h3 {
+  color: #b88ef8;
+}
+
+/* .sessions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: #5a5563;
+} */
+
+.session-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #352e41;
+  color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  text-align: center;
+}
+
+.session-item img {
+  height: auto;
+  max-height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
