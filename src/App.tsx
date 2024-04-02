@@ -1,9 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import RootLayout from "./screens/RootLayout";
-import HomePage from "./screens/HomePage";
+
 import MissionPage from "./screens/MissionPage";
 import SessionsPage from "./screens/SessionsPage";
+import DetailsPage from "./screens/DetailsPage";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import SessionLayout from "./screens/SessionLayout";
 
 const router = createBrowserRouter([
   {
@@ -11,21 +15,25 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        index: true,
-        element: <HomePage />,
+        path: "sessions",
+        element: <SessionLayout />,
+        children: [
+          { index: true, element: <SessionsPage /> },
+          { path: ":id", element: <DetailsPage /> },
+        ],
       },
       {
         path: "mission",
         element: <MissionPage />,
-      },
-      {
-        path: "sessions",
-        element: <SessionsPage />,
       },
     ],
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
