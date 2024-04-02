@@ -2,6 +2,7 @@ import microphone from "./assets/microphone.jpg";
 import frenchClass from "./assets/french-class.jpg";
 import japanImg from "./assets/japan.jpg";
 import studioImg from "./assets/music-studio.jpg";
+import italianFood from "./assets/italian-food.jpg";
 
 export type Session = {
   id: string;
@@ -63,7 +64,7 @@ export const SESSIONS: Session[] = [
   },
   {
     id: "sess05",
-    title: "Recording Studio Basics",
+    title: "Introduction to recording Studio Basics",
     summary: "Introduction to recording studio equipment and techniques.",
     description: `
       Explore the world of recording studios and learn the essentials of audio recording.
@@ -74,5 +75,20 @@ export const SESSIONS: Session[] = [
     duration: 2,
     date: "2023-11-25",
     image: studioImg,
+  },
+  {
+    id: "sess06",
+    title: "Introduction to Italian Cuisine",
+    summary: "Discover the secrets of authentic Italian cooking.",
+    description: `
+    Indulge in the flavors of Italy with our introduction to Italian cuisine session.
+    \n\nHighlights include:\n\n- Introduction to key Italian ingredients and flavors.
+    \n- Cooking demonstrations of classic Italian dishes.
+    \n- Tips and techniques for perfect pasta and pizza.
+    \n- Wine pairing suggestions for Italian meals.
+    \n\nJoin us for a delicious journey through the heart of Italian culinary traditions.`,
+    duration: 1.5,
+    date: "2023-12-01",
+    image: italianFood,
   },
 ];

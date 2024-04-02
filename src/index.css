@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
 :root {
   background: #383241;
   color: #b9aecd;
@@ -9,9 +12,10 @@
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-flow: column wrap;
+  flex: 1;
 }
 
 #root {
@@ -23,15 +27,10 @@ h3 {
   color: #b88ef8;
 }
 
-/* .sessions-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  border-radius: 6px;
-  margin: 1rem 0;
-  padding: 1rem;
-  background-color: #5a5563;
-} */
+.session-items {
+  grid-template-columns: repeat(3, minmax(0, 300px));
+  grid-auto-flow: dense;
+}
 
 .session-item {
   display: flex;
@@ -42,12 +41,11 @@ h3 {
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  text-align: center;
 }
 
 .session-item img {
   height: auto;
-  max-height: 150px;
+  max-height: 200px;
   width: 100%;
   object-fit: cover;
 }
