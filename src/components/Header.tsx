@@ -2,9 +2,14 @@ import { ReactNode, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Modal from "./Modal";
 import UpcommingItem from "./UpcommingItem";
+import { useSessionsSelector } from "../store/hooks";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const upcommingSessions = useSessionsSelector(
+    (state) => state.upcommingSessions.savedSessions
+  );
+
   const activeStyle = "border-b-2";
   let modal: ReactNode;
 
@@ -18,12 +23,22 @@ export default function Header() {
         isOpen={isOpen}
         onClose={toggleModalHandler}
         title="Upcomming Sessions"
+        mode="UPCOMMING"
       >
-        <UpcommingItem
-          title="Test"
-          date="04-02-2024"
-          summary="Lorem ipsum dolor sit, amet consectetur adipisicing elit. "
-        />
+        {upcommingSessions.length <= 0 && (
+          <p className="text-white text-lg font-light">
+            You have no booked session at the moment
+          </p>
+        )}
+        {upcommingSessions.map((session) => (
+          <UpcommingItem
+            title={session.title}
+            date={session.date}
+            summary={session.summary}
+            id={session.id}
+            key={session.id}
+          />
+        ))}
       </Modal>
     );
   }

@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useSessionsSelector } from "../store/hooks";
+import { useSessionsDispatch, useSessionsSelector } from "../store/hooks";
 import { formatDate } from "../util/formatter";
 import { type ReactNode, useState } from "react";
 import Modal from "../components/Modal";
 import Form from "../components/Form";
 import Input from "../components/Input";
+import { bookSession } from "../store/sessions-slice";
 
 type Params = {
   id: string;
@@ -12,6 +13,8 @@ type Params = {
 
 export default function DetailsPage() {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useSessionsDispatch();
+
   let modal: ReactNode;
   const { id } = useParams<Params>();
   const sessionDetails = useSessionsSelector((state) =>
@@ -22,13 +25,23 @@ export default function DetailsPage() {
     return;
   }
 
+  function bookSessionHandler() {
+    dispatch(bookSession({ id: id! }));
+  }
+
   function toggleModalHandler() {
     setIsOpen((prevState) => !prevState);
   }
 
   if (isOpen) {
     modal = (
-      <Modal isOpen title="Book Session" onClose={toggleModalHandler}>
+      <Modal
+        isOpen
+        title="Book Session"
+        onClose={toggleModalHandler}
+        mode="BOOK"
+        onConfirm={bookSessionHandler}
+      >
         <Form>
           <Input label="name" />
           <Input label="E-mail" />
@@ -38,7 +51,7 @@ export default function DetailsPage() {
   }
   const formattedDate = formatDate(sessionDetails.date);
   return (
-    <div className="flex flex-1 flex-col px-8">
+    <div className="flex flex-1 flex-col px-8 ">
       {modal}
       <div className="flex">
         <div className="flex w-1/3 max-h-52 my-6 rounded-xl overflow-hidden shadow-xl">
