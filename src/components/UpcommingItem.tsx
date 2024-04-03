@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useSessionsDispatch } from "../store/hooks";
 import { cancelSession } from "../store/sessions-slice";
 import { formatDate } from "../util/formatter";
@@ -25,7 +26,10 @@ export default function UpcommingItem({
   }
 
   return (
-    <div className="bg-[#3a3446] rounded-xl p-2 flex justify-between min-w-64 my-1 shadow-md">
+    <motion.div
+      className="bg-[#3a3446] rounded-xl p-2 flex justify-between min-w-64 my-1 shadow-md"
+      exit={{ opacity: 0, x: 30 }}
+    >
       <div>
         <button
           className="noStyle whitespace-normal break-words font-bold text-xl"
@@ -38,14 +42,16 @@ export default function UpcommingItem({
           {formattedDate}
         </p>
       </div>
-      <div className="mx-8 my-4">
-        <button
-          className="bg-transparent border-0 text-[#b88ef8] hover:bg-transparent hover:border-b rounded-none p-0 m-2"
-          onClick={cancelHandler}
-        >
-          Cancel
-        </button>
+      <div className="mx-8 my-4 flex items-center">
+        <div>
+          <button
+            className="bg-transparent border-0 text-[#b88ef8] hover:bg-transparent hover:border-b rounded-none p-0 m-2"
+            onClick={cancelHandler}
+          >
+            Cancel
+          </button>
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,7 @@
 import { ReactNode, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+
 import Modal from "./Modal";
 import UpcommingItem from "./UpcommingItem";
 import { useSessionsSelector } from "../store/hooks";
@@ -31,28 +33,37 @@ export default function Header() {
         title="Upcomming Sessions"
         mode="UPCOMMING"
       >
-        {upcommingSessions.length <= 0 && (
-          <p className="text-white text-lg font-light">
-            You have no booked session at the moment
-          </p>
-        )}
-        {upcommingSessions.map((session) => (
-          <UpcommingItem
-            title={session.title}
-            date={session.date}
-            summary={session.summary}
-            id={session.id}
-            key={session.id}
-            onClick={visitPageHandler}
-          />
-        ))}
+        <AnimatePresence>
+          {upcommingSessions.length <= 0 && (
+            <motion.p
+              className="text-white text-lg font-light"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0, transition: { delay: 0.2 } }}
+            >
+              You have no booked session at the moment
+            </motion.p>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {upcommingSessions.map((session) => (
+            <UpcommingItem
+              title={session.title}
+              date={session.date}
+              summary={session.summary}
+              id={session.id}
+              key={session.id}
+              onClick={visitPageHandler}
+            />
+          ))}
+        </AnimatePresence>
       </Modal>
     );
   }
 
   return (
     <header className="flex justify-between items-center">
-      {modal}
+      <AnimatePresence>{modal}</AnimatePresence>
       <NavLink to="sessions" end>
         <h1 className="font-bold text-4xl pb-1">Book a Session Manager</h1>
       </NavLink>
@@ -75,7 +86,13 @@ export default function Header() {
         </div>
 
         <div className="flex justify-end ">
-          <button onClick={toggleModalHandler}>Upcomming Sessions</button>
+          <motion.button
+            onClick={toggleModalHandler}
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 600 }}
+          >
+            Upcomming Sessions
+          </motion.button>
         </div>
       </div>
     </header>

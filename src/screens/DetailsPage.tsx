@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import { bookSession } from "../store/sessions-slice";
+import { AnimatePresence, motion } from "framer-motion";
 
 type Params = {
   id: string;
@@ -27,6 +28,7 @@ export default function DetailsPage() {
 
   function bookSessionHandler() {
     dispatch(bookSession({ id: id! }));
+    toggleModalHandler();
   }
 
   function toggleModalHandler() {
@@ -42,7 +44,7 @@ export default function DetailsPage() {
         mode="BOOK"
         onConfirm={bookSessionHandler}
       >
-        <Form>
+        <Form onClose={toggleModalHandler} onSubmit={bookSessionHandler}>
           <Input label="name" />
           <Input label="E-mail" />
         </Form>
@@ -52,7 +54,7 @@ export default function DetailsPage() {
   const formattedDate = formatDate(sessionDetails.date);
   return (
     <div className="flex flex-1 flex-col px-8 ">
-      {modal}
+      <AnimatePresence>{modal}</AnimatePresence>
       <div className="flex">
         <div className="flex w-1/3 max-h-52 my-6 rounded-xl overflow-hidden shadow-xl">
           <img src={sessionDetails.image} alt={sessionDetails.summary} />
@@ -67,12 +69,14 @@ export default function DetailsPage() {
               Total duration: {sessionDetails.duration} Hour(s)
             </p>
           </div>
-          <button
+          <motion.button
             className="text-[#cacaca] font-semibold"
             onClick={toggleModalHandler}
+            whileHover={{ scale: 1.08 }}
+            transition={{ type: "spring", stiffness: 600 }}
           >
             Book Session
-          </button>
+          </motion.button>
         </div>
       </div>
       <div>

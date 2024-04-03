@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Session } from "../dummy_sessions";
 import { formatDate } from "../util/formatter";
+import { motion } from "framer-motion";
 
 export default function SessionItem({
   date,
@@ -12,7 +13,12 @@ export default function SessionItem({
   const formattedDate = formatDate(date);
 
   return (
-    <div className="session-item">
+    <motion.li
+      className="session-item"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ type: "spring" }}
+    >
       <img src={image} alt={summary} />
       <div className="p-2 flex flex-col flex-1 justify-between">
         <div className="flex flex-1 flex-col items-start">
@@ -23,13 +29,17 @@ export default function SessionItem({
           <p>{formattedDate}</p>
           <div>
             <Link to={id}>
-              <button className="border-2 border-[#b88ef8] bg-[#b88ef8] hover:bg-[#a881e2] rounded-md px-2  text-[#383241]">
+              <motion.button
+                className="border-2 border-[#b88ef8] bg-[#b88ef8] hover:bg-[#a881e2] rounded-md px-2  text-[#383241]"
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 600 }}
+              >
                 Learn More
-              </button>
+              </motion.button>
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </motion.li>
   );
 }
