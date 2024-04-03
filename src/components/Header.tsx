@@ -1,10 +1,11 @@
 import { ReactNode, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import UpcommingItem from "./UpcommingItem";
 import { useSessionsSelector } from "../store/hooks";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const upcommingSessions = useSessionsSelector(
     (state) => state.upcommingSessions.savedSessions
@@ -15,6 +16,11 @@ export default function Header() {
 
   function toggleModalHandler() {
     setIsOpen((prevState) => !prevState);
+  }
+
+  function visitPageHandler(id: string) {
+    navigate(`/sessions/${id}`);
+    toggleModalHandler();
   }
 
   if (isOpen) {
@@ -37,6 +43,7 @@ export default function Header() {
             summary={session.summary}
             id={session.id}
             key={session.id}
+            onClick={visitPageHandler}
           />
         ))}
       </Modal>

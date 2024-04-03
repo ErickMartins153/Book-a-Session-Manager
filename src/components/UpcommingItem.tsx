@@ -7,6 +7,7 @@ type UpcommingItemProps = {
   summary: string;
   date: string;
   id: string;
+  onClick: (id: string) => void;
 };
 
 export default function UpcommingItem({
@@ -14,6 +15,7 @@ export default function UpcommingItem({
   summary,
   date,
   id,
+  onClick,
 }: UpcommingItemProps) {
   const dispatch = useSessionsDispatch();
   const formattedDate = formatDate(date);
@@ -23,11 +25,14 @@ export default function UpcommingItem({
   }
 
   return (
-    <div className="bg-[#3a3446] rounded-xl p-2 flex justify-between min-w-64 my-1">
+    <div className="bg-[#3a3446] rounded-xl p-2 flex justify-between min-w-64 my-1 shadow-md">
       <div>
-        <h2 className="whitespace-normal break-words font-bold text-xl">
+        <button
+          className="noStyle whitespace-normal break-words font-bold text-xl"
+          onClick={onClick.bind(null, id)}
+        >
           {title}
-        </h2>
+        </button>
         <p className="whitespace-normal break-words text-white">{summary}</p>
         <p className="whitespace-normal break-words text-white font-thin mt-4">
           {formattedDate}
