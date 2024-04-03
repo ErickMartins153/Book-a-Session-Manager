@@ -53,13 +53,28 @@ export default function DetailsPage() {
   }
   const formattedDate = formatDate(sessionDetails.date);
   return (
-    <div className="flex flex-1 flex-col px-8 ">
+    <motion.div
+      className="flex flex-1 flex-col px-8 "
+      initial={{ opacity: 0, y: 64 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.8 } }}
+      exit={{ opacity: 0 }}
+    >
       <AnimatePresence>{modal}</AnimatePresence>
       <div className="flex">
-        <div className="flex w-1/3 max-h-52 my-6 rounded-xl overflow-hidden shadow-xl">
+        <motion.div
+          className="flex w-1/3 max-h-52 my-6 rounded-xl overflow-hidden shadow-xl"
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
           <img src={sessionDetails.image} alt={sessionDetails.summary} />
-        </div>
-        <div className="mx-6 my-8 flex flex-col justify-between">
+        </motion.div>
+        <motion.div
+          className="mx-6 my-8 flex flex-col justify-between"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <div className="flex flex-col">
             <h2 className="text-3xl mb-4 font-bold text-white">
               {sessionDetails.title}
@@ -77,15 +92,20 @@ export default function DetailsPage() {
           >
             Book Session
           </motion.button>
-        </div>
+        </motion.div>
       </div>
       <div>
         <div className="flex flex-1  rounded-xl p-6 bg-[#383241] shadow-lg mb-8">
-          <p className=" whitespace-pre-line text-white">
+          <motion.p
+            className=" whitespace-pre-line text-white"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             {sessionDetails.description}
-          </p>
+          </motion.p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -29,9 +29,15 @@ body:has(dialog[open]) {
   padding: 32px 44px;
 }
 
-h2,
 h3 {
   color: #b88ef8;
+}
+
+h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
 button {

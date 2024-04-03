@@ -65,7 +65,7 @@ export default function Header() {
     <header className="flex justify-between items-center">
       <AnimatePresence>{modal}</AnimatePresence>
       <NavLink to="sessions" end>
-        <h1 className="font-bold text-4xl pb-1">Book a Session Manager</h1>
+        <h1 className="font-bold text-5xl pb-1">Book a Session Manager</h1>
       </NavLink>
       <div className=" flex w-1/2 items-center justify-end ">
         <div className=" flex w-1/2 justify-evenly">

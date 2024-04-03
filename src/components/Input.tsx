@@ -20,7 +20,7 @@ export default function Input({ label }: InputProps) {
           autoComplete="off"
           autoCapitalize="off"
           autoCorrect="off"
-          // required
+          required
         />
       </p>
     </div>

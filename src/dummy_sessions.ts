@@ -27,7 +27,7 @@ export const SESSIONS: Session[] = [
       \n- Interactive exercises for improvement.
       \n\nBy the end, you'll have a clear roadmap for your melodic adventure.`,
     duration: 1,
-    date: "2023-11-01",
+    date: "2024-11-01",
     image: microphone,
   },
   {
@@ -43,7 +43,7 @@ export const SESSIONS: Session[] = [
       \n- Receive personalized feedback from experienced instructors.
       \n\nIdeal for learners with some prior knowledge of French who want to focus on speaking proficiency.`,
     duration: 1.5,
-    date: "2023-11-05",
+    date: "2024-11-05",
     image: frenchClass,
   },
   {
@@ -59,7 +59,7 @@ export const SESSIONS: Session[] = [
       \n- Participate in fun activities to practice your language skills.
       \n\nNo prior knowledge of Japanese required. Get ready for an unforgettable cultural experience!`,
     duration: 2,
-    date: "2023-11-15",
+    date: "2024-11-15",
     image: japanImg,
   },
   {
@@ -73,7 +73,7 @@ export const SESSIONS: Session[] = [
       \n- Recording software and basic editing.
       \n\nWhether you're a musician or an aspiring audio engineer, this session is for you!`,
     duration: 2,
-    date: "2023-11-25",
+    date: "2024-07-07",
     image: studioImg,
   },
   {
@@ -88,7 +88,7 @@ export const SESSIONS: Session[] = [
     \n- Wine pairing suggestions for Italian meals.
     \n\nJoin us for a delicious journey through the heart of Italian culinary traditions.`,
     duration: 1.5,
-    date: "2023-12-01",
+    date: "2024-12-01",
     image: italianFood,
   },
 ];

@@ -34,7 +34,7 @@ export default function Modal({
         exit="hidden"
         open={isOpen}
       >
-        <h2 className="text-3xl font-bold mb-4 text-white">{title}</h2>
+        <h2>{title}</h2>
         <div className="flex flex-col">
           {children}
           <div className="flex justify-end">
